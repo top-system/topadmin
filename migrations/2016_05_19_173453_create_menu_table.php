@@ -28,6 +28,8 @@ class CreateMenuTable extends Migration
             $table->string('color')->nullable();
             $table->integer('parent_id')->nullable();
             $table->integer('order');
+            $table->string('route')->nullable()->default(null);
+            $table->text('parameters')->nullable()->default(null);
             $table->timestamps();
         });
 

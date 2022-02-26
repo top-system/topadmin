@@ -21,8 +21,12 @@ class CreateDataTypesTable extends Migration
             $table->string('display_name_plural');
             $table->string('icon')->nullable();
             $table->string('model_name')->nullable();
+            $table->string('policy_name')->nullable();
+            $table->string('controller')->nullable();
             $table->string('description')->nullable();
             $table->boolean('generate_permissions')->default(false);
+            $table->tinyInteger('server_side')->default(0);
+            $table->text('details')->nullable();
             $table->timestamps();
         });
 
@@ -40,6 +44,7 @@ class CreateDataTypesTable extends Migration
             $table->boolean('add')->default(true);
             $table->boolean('delete')->default(true);
             $table->text('details')->nullable();
+            $table->integer('order')->default(1);
 
             $table->foreign('data_type_id')->references('id')->on('data_types')
                 ->onUpdate('cascade')->onDelete('cascade');
