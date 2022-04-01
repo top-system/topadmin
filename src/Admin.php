@@ -3,6 +3,7 @@
 namespace TopSystem\TopAdmin;
 use Illuminate\Filesystem\Filesystem;
 use TopSystem\TopAdmin\Traits\ActionTrait;
+use TopSystem\TopAdmin\Traits\AssetTrait;
 use TopSystem\TopAdmin\Traits\ModelTrait;
 use TopSystem\TopAdmin\Traits\FormFieldTrait;
 use Illuminate\Database\Eloquent\Collection;
@@ -19,6 +20,7 @@ class Admin
     use FormFieldTrait;
     use ModelTrait;
     use ActionTrait;
+    use AssetTrait;
 
     protected $filesystem;
 
@@ -35,6 +37,7 @@ class Admin
     {
         $this->filesystem = app(Filesystem::class);
         $this->findVersion();
+        $this->initAsset();
     }
 
     public function view($name, array $parameters = [])

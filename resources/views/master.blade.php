@@ -45,8 +45,8 @@
         }
     </style>
 
-    @if(!empty(config('admin.additional_css')))<!-- Additional CSS -->
-        @foreach(config('admin.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
+    @if(!empty( Admin::getCss() ))<!-- Additional CSS -->
+        @foreach(Admin::getCss() as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
     @endif
 
     @yield('head')
@@ -142,8 +142,8 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
 @include('admin::media.manager')
 @yield('javascript')
 @stack('javascript')
-@if(!empty(config('admin.additional_js')))<!-- Additional Javascript -->
-    @foreach(config('admin.additional_js') as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
+@if(!empty(Admin::getJs()))<!-- Additional Javascript -->
+    @foreach(Admin::getJs() as $js)<script type="text/javascript" src="{{ asset($js) }}"></script>@endforeach
 @endif
 
 </body>
