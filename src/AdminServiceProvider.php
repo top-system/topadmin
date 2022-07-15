@@ -58,7 +58,7 @@ class AdminServiceProvider extends ServiceProvider
         $this->app->register(EventServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
-        $loader->alias('admin', AdminFacade::class);
+        $loader->alias('Admin', AdminFacade::class);
 
         $this->app->singleton('admin', function () {
             return new Admin();
