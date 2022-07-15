@@ -16,6 +16,6 @@ class Admin extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \TopSystem\TopAdmin\Admin::class;
+        return 'admin';
     }
 }
