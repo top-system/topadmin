@@ -1,6 +1,6 @@
 <?php
 
-namespace TopSystem\TopAdmin;
+namespace TopSystem\TopAdmin\Eloquent;
 
 use ArrayAccess;
 use Illuminate\Database\Eloquent\Model;

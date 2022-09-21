@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use TopSystem\TopAdmin\Facades\Admin;
 use TopSystem\TopAdmin\Models\Translation;
-use TopSystem\TopAdmin\Translator;
+use TopSystem\TopAdmin\Eloquent\Translator;
 
 trait Translatable
 {

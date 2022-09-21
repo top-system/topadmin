@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
+use Prettus\Repository\Providers\RepositoryServiceProvider;
 use TopSystem\TopAdmin\Events\FormFieldsRegistered;
 use TopSystem\TopAdmin\Facades\Admin as AdminFacade;
 use TopSystem\TopAdmin\FormFields\After\DescriptionHandler;
@@ -56,6 +57,7 @@ class AdminServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(EventServiceProvider::class);
+        $this->app->register(RepositoryServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
         $loader->alias('Admin', AdminFacade::class);
