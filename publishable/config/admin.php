@@ -80,7 +80,7 @@ return [
 
     'database' => [
         'tables' => [
-            'hidden' => ['migrations', 'data_rows', 'data_types', 'menu_items', 'password_resets', 'permission_role', 'settings'],
+            'hidden' => ['migrations', 'data_rows', 'data_types', 'menu_items', 'password_resets', 'permission_role', 'personal_access_tokens', 'settings'],
         ],
         'autoload_migrations' => true,
     ],
@@ -90,7 +90,7 @@ return [
     | Multilingual configuration
     |--------------------------------------------------------------------------
     |
-    | Here you can specify if you want Admin to ship with support for
+    | Here you can specify if you want Voyager to ship with support for
     | multilingual and what locales are enabled.
     |
     */
@@ -104,13 +104,13 @@ return [
         /*
          * Select default language
          */
-        'default' => 'zh_CN',
+        'default' => 'en',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
-            'zh_CN',
+            'en',
             //'pt',
         ],
     ],
@@ -144,7 +144,7 @@ return [
         ],
 
         'widgets' => [
-            'TopSystem\\TopAdmin\\Widgets\\UserDimmer',
+
         ],
 
     ],
@@ -154,7 +154,7 @@ return [
     | Automatic Procedures
     |--------------------------------------------------------------------------
     |
-    | When a change happens on Admin, we can automate some routines.
+    | When a change happens on Voyager, we can automate some routines.
     |
     */
 
@@ -177,7 +177,7 @@ return [
     | UI Generic Config
     |--------------------------------------------------------------------------
     |
-    | Here you change some of the Admin UI settings.
+    | Here you change some of the Voyager UI settings.
     |
     */
 

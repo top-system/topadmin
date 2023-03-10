@@ -15,7 +15,7 @@
         <a class="fileType" target="_blank"
           href="{{ Storage::disk(config('admin.storage.disk'))->url($dataTypeContent->{$row->field}) }}"
           data-file-name="{{ $dataTypeContent->{$row->field} }}" data-id="{{ $dataTypeContent->getKey() }}">>
-          Download
+            {{ __('admin::generic.download') }}
         </a>
         <a href="#" class="admin-x remove-single-file"></a>
       </div>
