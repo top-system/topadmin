@@ -14,7 +14,7 @@ class MakeControllersCommand extends Command
      *
      * @var string
      */
-    protected $name = 'topadmin:controllers';
+    protected $name = 'admin:controllers';
 
     /**
      * The console command description.

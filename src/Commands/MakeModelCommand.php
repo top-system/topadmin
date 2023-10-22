@@ -12,7 +12,7 @@ class MakeModelCommand extends ModelMakeCommand
      *
      * @var string
      */
-    protected $name = 'topadmin:make:model';
+    protected $name = 'admin:make:model';
 
     /**
      * The console command description.

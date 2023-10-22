@@ -24,6 +24,7 @@ use TopSystem\TopAdmin\Http\Middleware\AdminMiddleware;
 use TopSystem\TopAdmin\Policies\BasePolicy;
 use TopSystem\TopAdmin\Policies\MenuItemPolicy;
 use TopSystem\TopAdmin\Policies\SettingPolicy;
+use TopSystem\TopAdmin\Providers\DummyServiceProvider;
 use TopSystem\TopAdmin\Providers\EventServiceProvider;
 use TopSystem\TopAdmin\Translator\Collection as TranslatorCollection;
 use TopSystem\TopAdmin\Models\MenuItem;
@@ -57,6 +58,7 @@ class AdminServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(EventServiceProvider::class);
+        $this->app->register(DummyServiceProvider::class);
 //        $this->app->register(RepositoryServiceProvider::class);
 
         $loader = AliasLoader::getInstance();

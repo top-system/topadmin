@@ -1,11 +1,14 @@
 <?php
 namespace TopSystem\TopAdmin\Traits;
 
+use TopSystem\TopAdmin\Models\Category;
 use TopSystem\TopAdmin\Models\DataType;
 use TopSystem\TopAdmin\Models\DataRow;
 use TopSystem\TopAdmin\Models\Menu;
 use TopSystem\TopAdmin\Models\MenuItem;
+use TopSystem\TopAdmin\Models\Page;
 use TopSystem\TopAdmin\Models\Permission;
+use TopSystem\TopAdmin\Models\Post;
 use TopSystem\TopAdmin\Models\Role;
 use TopSystem\TopAdmin\Models\Setting;
 use TopSystem\TopAdmin\Models\User;
@@ -22,6 +25,9 @@ trait ModelTrait{
         'Setting'     => Setting::class,
         'User'        => User::class,
         'Translation' => Translation::class,
+        'Category'    => Category::class,
+        'Post'        => Post::class,
+        'Page'        => Page::class
     ];
 
     public function model($name)

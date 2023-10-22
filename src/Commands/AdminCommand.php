@@ -16,7 +16,7 @@ class AdminCommand extends Command
      *
      * @var string
      */
-    protected $name = 'topadmin:admin';
+    protected $name = 'admin:admin';
 
     /**
      * The console command description.

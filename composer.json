@@ -38,7 +38,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TopSystem\\TopAdmin\\AdminServiceProvider"
+                "TopSystem\\TopAdmin\\AdminServiceProvider",
+                "TopSystem\\TopAdmin\\Providers\\DummyServiceProvider"
             ]
         }
     }

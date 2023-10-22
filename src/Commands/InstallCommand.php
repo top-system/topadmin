@@ -6,8 +6,9 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Symfony\Component\Console\Input\InputOption;
-use TopSystem\TopAdmin\AdminServiceProvider;
+use TopSystem\TopAdmin\Providers\DummyServiceProvider;
 use TopSystem\TopAdmin\Seed;
+use TopSystem\TopAdmin\AdminServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -16,14 +17,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'topadmin:install';
+    protected $name = 'admin:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install the Admin package';
+    protected $description = 'Install the Admin Admin package';
 
     /**
      * The Composer instance.
@@ -53,6 +54,7 @@ class InstallCommand extends Command
     {
         return [
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production', null],
+            ['with-dummy', null, InputOption::VALUE_NONE, 'Install with dummy data', null],
         ];
     }
 
@@ -121,7 +123,18 @@ class InstallCommand extends Command
 
         $publishablePath = dirname(__DIR__).'/../publishable';
 
-        $this->call('vendor:publish', ['--provider' => AdminServiceProvider::class, '--tag' => ['config', 'admin_avatar']]);
+        if ($this->option('with-dummy')) {
+            $this->info('Publishing dummy content');
+            $tags = ['dummy_seeds', 'dummy_content', 'dummy_config', 'dummy_migrations'];
+            $this->call('vendor:publish', ['--provider' => DummyServiceProvider::class, '--tag' => $tags]);
+
+            $this->addNamespaceIfNeeded(
+                collect($filesystem->files("{$publishablePath}/database/dummy_seeds/")),
+                $filesystem
+            );
+        } else {
+            $this->call('vendor:publish', ['--provider' => AdminServiceProvider::class, '--tag' => ['config', 'admin_avatar']]);
+        }
 
         $this->addNamespaceIfNeeded(
             collect($filesystem->files("{$publishablePath}/database/seeds/")),
@@ -134,6 +147,14 @@ class InstallCommand extends Command
 
         $this->info('Seeding data into the database');
         $this->call('db:seed', ['--class' => 'AdminDatabaseSeeder', '--force' => $this->option('force')]);
+
+        if ($this->option('with-dummy')) {
+            $this->info('Migrating dummy tables');
+            $this->call('migrate');
+
+            $this->info('Seeding dummy data');
+            $this->call('db:seed', ['--class' => 'DummyDatabaseSeeder', '--force' => $this->option('force')]);
+        }
 
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
