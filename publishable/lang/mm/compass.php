@@ -6,7 +6,7 @@ return [
     'links'         => [
         'title'                 => 'Links',
         'documentation'         => 'Documentation',
-        'voyager_homepage'      => 'Admin Homepage',
+        'admin_homepage'      => 'Admin Homepage',
     ],
     'commands'      => [
         'title'                 => 'Commands',
