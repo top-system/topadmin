@@ -17,6 +17,15 @@ class Table extends DoctrineTable
 
         $columns = [];
         foreach ($table['columns'] as $columnArr) {
+            // support doctrine\dbal 3.x
+            unset(
+                $columnArr['oldName'],
+                $columnArr['null'],
+                $columnArr['extra'],
+                $columnArr['composite'],
+                $columnArr['charset'],
+                $columnArr['collation'],
+            );
             $column = Column::make($columnArr, $table['name']);
             $columns[$column->getName()] = $column;
         }
